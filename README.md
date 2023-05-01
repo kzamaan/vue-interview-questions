@@ -7,24 +7,24 @@ List of 10 VueJS Interview Questions
 -------------------------------------------------------------------
 | No. | Questions |
 |---- | ---------
-|1  | [Explain the difference between slots and scoped slots] |
-|2  | [Explain Vue.js reactivity and common issues when tracking changes] |
-|3  | [What are mixins? Describe their benefits and drawbacks.]|
-|4  | [What is a single-file component?]|
-|5  | [Describe data flow between components in a Vue.js app]|
-|6  | [List the most common cause of memory leaks in Vue.js apps and how they can be solved]|
-|7  | [What is the virtual DOM and how is it beneficial?]|
-|8  | [Consider the following code (`index.html` is omitted for brevity.) What is it going to output in the browser? Please mention any notable console output as well]|
-|9  | [Consider the following code (index.html is omitted for brevity). What is it going to output in the console?]|
-|10 | [Why would you choose Vue.js over other front-end frameworks?]|
+|1  | [Explain the difference between slots and scoped slots](#explain-the-difference-between-slots-and-scoped-slots) |
+|2  | [Explain Vue.js reactivity and common issues when tracking changes](#explain-vue-js-reactivity-and-common-issues-when-tracking-changes) |
+|3  | [What are mixins? Describe their benefits and drawbacks.](#what-are-mixins-describe-their-benefits-and-drawbacks) |
+|4  | [What is a single-file component?](#what-is-a-single-file-component) |
+|5  | [Describe data flow between components in a Vue.js app](#describe-data-flow-between-components-in-a-vue-js-app)|
+|6  | [List the most common cause of memory leaks in Vue.js apps and how they can be solved](#list-the-most-common-cause-of-memory-leaks-in-vue-js-apps-and-how-they-can-be-solved)|
+|7  | [What is the virtual DOM and how is it beneficial?](#what-is-the-virtual-dom-and-how-is-it-beneficial)|
+|8  | [Consider the following code (`index.html` is omitted for brevity.) What is it going to output in the browser? Please mention any notable console output as well](#consider-the-following-code-index-html-is-omitted-for-brevity-what-is-it-going-to-output-in-the-browser-please-mention-any-notable-console-output-as-well)|
+|9  | [Consider the following code (index.html is omitted for brevity). What is it going to output in the console?](#consider-the-following-code-index-html-is-omitted-for-brevity-what-is-it-going-to-output-in-the-console)|
+|10 | [Why would you choose Vue.js over other front-end frameworks?](#why-would-you-choose-vue-js-over-other-front-end-frameworks)|
 
-1. ## Explain the difference between slots and scoped slots
+## 1. Explain the difference between slots and scoped slots
 
 A slot is a placeholder in a child component that is filled with content passed from the parent. Content of a regular slot is compiled in the parent’s scope and then passed to the child component.
 
 Thus you can’t use child component properties in a slot’s content. But scoped slots allow you to pass child component data to the parent scope and then use that data in slot content.
 
-2. ## Explain Vue.js reactivity and common issues when tracking changes
+## 2. Explain Vue.js reactivity and common issues when tracking changes
 
 All properties defined in a Vue instance’s data option are reactive, meaning that if they change, the component is automatically updated and re-rendered as needed.
 
@@ -35,7 +35,7 @@ The following limitations must be accounted for when designing a Vue app:
 - Vue cannot detect object property addition or deletion due to a JavaScript limitation, so the Vue.set method must be used to add new root-level reactive properties.
 - Similarly, Vue cannot detect when an array item is modified using an index. Vue.set must be used here as well
 
-3. ## What are mixins? Describe their benefits and drawbacks
+## 3. What are mixins? Describe their benefits and drawbacks
 
 Mixin support is a feature that allows code reuse between components in a Vue.js application and a software composition tool.
 
@@ -49,13 +49,13 @@ It helps to implement mixins using pure functions that don’t modify anything o
 
 Global mixins should be avoided, as affecting every single component can lead to maintenance issues as an application grows. Injecting specific mixins to components as needed leads to more maintainable code.
 
-4. ## What is a single-file component?
+## 4. What is a single-file component?
 
 A single-file component is a file with a .vue extension that contains a Vue component. It contains the component’s template, logic, and styles all bundled together in one file. It consists of one `<script>` block, optional `<template>` and `<style>` blocks, and possible additional custom blocks.
 
 To use one, you need to set up Vue Loader for parsing the file (usually done as part of a webpack building pipeline). But this then also supports using non-default languages such as Sass or HTML templating languages with pluggable pre-processors.
 
-5. ##  Describe data flow between components in a Vue.js app
+## 5. Describe data flow between components in a Vue.js app
 
 Vue.js uses what’s called a one-way data flow. Data is passed to child components from a given parent component using a prop or a custom attribute that becomes a property on the child component instance.
 
@@ -63,7 +63,7 @@ When the parent component updates a prop value, it’s automatically updated in 
 
 The child component can communicate back to the parent via an event. The parent can assign a handler to any event emitted by the child component instance and data can be passed back to the parent. The child component can emit a special event for updating the props passed to it.
 
-6. ## List the most common cause of memory leaks in Vue.js apps and how they can be solved
+## 6. List the most common cause of memory leaks in Vue.js apps and how they can be solved
 
 Memory leaks in Vue.js applications often come from using third-party libraries that create their own instances and/or manipulate the DOM. The v-if directive and the Vue Router destroy Vue component instances; however, cleaning up after any third party library should be done manually in the `beforeDestroy()` lifecycle hook.
 
@@ -85,7 +85,7 @@ beforeDestroy() {
 
 If cleanup is not done before our component gets destroyed, then that memory is never going to be released. Hence, a memory leak.
 
-7. ## What is the virtual DOM and how is it beneficial?
+## 7. What is the virtual DOM and how is it beneficial?
 
 The virtual DOM is a tree-like data structure (or a collection) of JavaScript objects representing DOM nodes that are managed by Vue.js and that should be rendered on the page. These objects are called “virtual nodes” or `VNodes` for short.
 
@@ -93,7 +93,7 @@ The main purpose of the virtual DOM is faster and more efficient DOM manipulatio
 
 Working with the virtual DOM JavaScript object is significantly faster. Subsequently, Vue.js organizes DOM updates in batches for more efficiency.
 
-8. ## Consider the following code (`index.html` is omitted for brevity.) What is it going to output in the browser? Please mention any notable console output as well
+## 8. Consider the following code (`index.html` is omitted for brevity.) What is it going to output in the browser? Please mention any notable console output as well
 
 ```js
 const MockComponent = {
@@ -129,7 +129,7 @@ A `Boolean` prop works as boolean attribute in HTML. If a boolean prop is presen
 
 Bonus points for mentioning that required doesn’t make much sense here, as omitting this prop (i.e. `<MockComponent/>`) is the proper way of setting its value to false.
 
-9. ## Consider the following code (index.html is omitted for brevity). What is it going to output in the console?
+## 9. Consider the following code (index.html is omitted for brevity). What is it going to output in the console?
 
 ```js
 const MockComponent = {
@@ -200,7 +200,7 @@ It will output:
 
 When the watcher runs immediately it uses the initial value, an empty string. The watcher isn’t triggered when `beforeCreate` is fired, as reactivity hasn’t been initialized yet. Watchers are `destroyed` before `beforeDestroy` is called.
 
-10. ## Why would you choose Vue.js over other front-end frameworks?
+## 10. Why would you choose Vue.js over other front-end frameworks?
 
 When a developer chooses a tech stack they should display an understanding of the pros and cons of alternative solutions. Vue.js should be compared with the most popular front-end frameworks, React and Angular.
 
@@ -229,7 +229,3 @@ Thus, all three frameworks are well-suited for building large-scale apps.
 React is the most popular framework at the moment, having a considerably richer ecosystem than both Vue and Angular, with a large number of third-party libraries.
 
 To sum up, Vue.js is on equal footing with other frameworks when building large-scale apps, and it excels when you need to work with legacy applications or jump in and get something done fast. But it’s worth checking ecosystem support for your project’s particulars first.
-
-1. Do this.
-1. Do that.
-1. Done.
